@@ -1,0 +1,53 @@
+\section{Introduction}
+
+The following documents lists conditions and requirements that a platform or system needs to met before it is deployed in Rubin's network. 
+
+Upon its installation in Rubin's network, it is assumed that the DevOps team will take control of it, will handle its administration, and will provide some basic troubleshooting. 
+
+\section{Requirements}
+
+In order to integrate any platform, system of computer with Rubin's network, it must met the following requirements. 
+
+\subsection{Hardware}
+
+As a general rule, no hardware will be installed in Rubin. Exceptions will be handled by the DevOps team and several conditions must be met, such as:
+
+\begin{itemize}
+    \item Equipment must come in rack form. 
+    \item Hardware Must have dual power supply
+    \item Unless special situations, it should not exceed 2RUs
+    \item Dual network connection (recommendation) 
+    \item It must have IPMI/BMC/IDRAC connection and license must be already purchased if needed.
+    \item 
+\end{itemize}
+
+Any special networking requirement must be discussed with the DevOps team. Some network protocols or features are not available.
+
+\subsection{Software}
+
+Software must run in Rubin’s  Kubernetes cluster and be compliant with policies required for pods to run. DevOps team will provide access to a development cluster to test deployments. If due to technical restrictions it is not possible to run the software in Kubernetes cluster, the DevOps team will decide where to run it. 
+
+Under very particular conditions, the DevOps team will allow the installation of physical servers in Rubin's network. However, if a server is allowed, it must be wiped out and reinstalled from scratch upon recepcion at Rubin, hence instructions to build the software must be included in the deliverables. 
+
+Software must adhere to DM standard published at https://developer.lsst.io/
+
+Software must be delivered as a repo in Github. If the vendor does not have a Github accounts, the DevOps team can provide a repo. 
+
+If the the software requires the authentication or validation of a user to make use of it, the system must integrate with the authentication backend of Rubin, based on IPA (ldap). The DevOps team will create a special user to bind to IPA. 
+
+The system must integrate to Rubin’s Monitoring platform. This could be accomplished by publishing an API, SNMP or any other method that would allow Rubin’s platform to pull a state. If the system is meant to trigger alarms, notifications, etc, it must integrate with Rubin’s notification system. 
+
+\subsection{Deliverable}
+
+The deliverable must include:
+
+\begin{itemize}
+    \item Documentation of design, components, usage and APIs when applicable.
+    \item  Detailed description of monitoring and notifications configurations. 
+    \item If a server is meant to be installed in Rubin's network, instruction to build the software from scratch must be included. 
+    \item Troubleshooting procedures
+    \item Backup strategy
+    \item Patching strategy	
+\end{itemize}
+	
+
